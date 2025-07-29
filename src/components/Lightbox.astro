@@ -1,0 +1,18 @@
+---
+// src/components/Lightbox.astro
+// Este componente solo contiene el script que se ejecutará en el cliente.
+---
+<script>
+  // Importamos la librería y sus estilos desde node_modules (donde se instaló con npm)
+  import GLightbox from 'glightbox';
+  import 'glightbox/dist/css/glightbox.min.css';
+
+  // Inicializamos la librería
+  const lightbox = GLightbox({
+    selector: '.glightbox',
+    touchNavigation: true,
+    loop: true,
+    openEffect: 'zoom',
+    closeEffect: 'fade',
+  });
+</script>

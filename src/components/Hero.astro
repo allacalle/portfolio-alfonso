@@ -1,0 +1,44 @@
+<section>
+  <p>Alfonso Lacalle García</p>
+  <h1>
+    Soy un ingeniero de software que crea soluciones a medida, poniendo el foco en
+    el usuario.
+  </h1>
+  <a href="#proyectos">Ver mis Proyectos</a>
+</section>
+
+<style>
+  section {
+    display: flex; /* Activa Flexbox para centrar contenido */
+    flex-direction: column; /* Apila los elementos verticalmente */
+    justify-content: center; /* Centra verticalmente */
+    align-items: center; /* Centra horizontalmente */
+    text-align: center; /* Centra el texto */
+    
+    min-height: 40vh; /* Le da una altura mínima del 40% de la pantalla */
+    margin-bottom: 4rem; /* Añade un espacio grande debajo del héroe */
+  }
+
+  h1 {
+    font-size: 2.5rem; /* Tamaño de letra grande para el titular */
+    max-width: 20ch; /* Limita el ancho del titular para que no sea muy largo */
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  p {
+    text-transform: uppercase; /* Pone tu nombre en mayúsculas */
+    letter-spacing: 0.1em; /* Añade un poco de espacio entre letras */
+    font-size: 0.9rem;
+    color: var(--color-acento); /* Usa nuestro color verde de acento */
+  }
+
+  a {
+    background-color: var(--color-acento);
+    color: var(--color-fondo); /* El texto del botón será del color del fondo */
+    padding: 0.75rem 1.5rem; /* Espaciado interno del botón */
+    border-radius: 0.25rem; /* Bordes ligeramente redondeados */
+    text-decoration: none; /* Quita el subrayado del enlace */
+    font-weight: bold;
+  }
+</style>

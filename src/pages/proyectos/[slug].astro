@@ -1,0 +1,155 @@
+---
+import { ALL_PROJECTS } from '../../data/projects.ts';
+import Lightbox from '../../components/Lightbox.astro'; // <-- IMPORTANTE
+
+
+// --- Lógica de Generación de Páginas (Sin cambios) ---
+export async function getStaticPaths() {
+  return ALL_PROJECTS.map(project => ({
+    params: { slug: project.slug },
+    props: { project },
+  }));
+}
+const { project } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width" />
+  <title>{project.title} - Alfonso Lacalle</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  
+  <!-- Importamos los estilos de la galería directamente aquí -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
+</head>
+<body>
+  <div class="project-container">
+    
+    <header class="project-header">
+      <a href="/" class="back-link">← Volver a todos los proyectos</a>
+      <span class="tag">{project.tag}</span>
+      <h1>{project.title}</h1>
+      <div class="buttons">
+        {project.liveUrl && <a href={project.liveUrl} class="button-primary" target="_blank" rel="noopener noreferrer">Ver Proyecto en Vivo</a>}
+        <a href={project.codeUrl} class="button-secondary" target="_blank" rel="noopener noreferrer">Ver Código en GitHub</a>
+      </div>
+    </header>
+
+    <!-- IMAGEN 1: PORTADA (con enlace para Lightbox) -->
+    <a href={project.gallery[0]} class="glightbox" data-gallery="proyecto-galeria">
+      <img src={project.gallery[0]} alt={`Portada del proyecto ${project.title}`} class="hero-image"/>
+    </a>
+    
+    <main class="project-content">
+      
+      <!-- --- CAPÍTULO 1: EL RETO --- -->
+      <section>
+        <h2>El Reto</h2>
+        <p>{project.challenge}</p>
+        <div class="image-pair">
+          <a href={project.gallery[1]} class="glightbox" data-gallery="proyecto-galeria"><img src={project.gallery[1]} alt="Ilustración del Reto" /></a>
+          <a href={project.gallery[2]} class="glightbox" data-gallery="proyecto-galeria"><img src={project.gallery[2]} alt="Detalle del Reto" /></a>
+        </div>
+      </section>
+      
+      <!-- --- CAPÍTULO 2: MI SOLUCIÓN --- -->
+      <section>
+        <h2>Mi Solución</h2>
+        <p>{project.solution}</p>
+        <div class="image-pair">
+          <a href={project.gallery[3]} class="glightbox" data-gallery="proyecto-galeria"><img src={project.gallery[3]} alt="Ilustración de la Solución" /></a>
+          <a href={project.gallery[4]} class="glightbox" data-gallery="proyecto-galeria"><img src={project.gallery[4]} alt="Detalle de la Solución" /></a>
+        </div>
+      </section>
+      
+      <!-- --- CAPÍTULO 3: INFORME DEL ARQUITECTO --- -->
+      <section class="architect-report">
+        <h2>Informe del Arquitecto</h2>
+        <h3>Pila Tecnológica (Tech Stack)</h3>
+        <ul>{project.techStack.map(tech => <li>{tech}</li>)}</ul>
+        <h3>Arquitectura y Decisiones Clave</h3>
+        <ul>{project.architecture.map(point => <li>{point}</li>)}</ul>
+        <h3>Desafío Técnico Principal</h3>
+        <p>{project.technicalChallenge}</p>
+        <a href={project.gallery[5]} class="glightbox" data-gallery="proyecto-galeria"><img src={project.gallery[5]} alt="Detalle Técnico" class="inline-image" /></a>
+      </section>
+
+    </main>
+  </div>
+
+  <Lightbox /> <!-- <--- IMPORTANTE: La etiqueta del componente al final -->
+
+
+</body>
+</html>
+
+<!-- --- ESTILOS CSS (Sin cambios) --- -->
+<style is:global>
+  @import '../../styles/global.css';
+  /* ... aquí va todo el CSS que ya teníamos, no lo he borrado ... */
+  .project-container { max-width: 800px; margin: 0 auto; padding: 2rem 1rem; }
+  .project-header { text-align: center; margin-bottom: 2rem; }
+  .back-link { display: inline-block; margin-bottom: 2rem; color: var(--color-acento); text-decoration: none; font-weight: bold; }
+  .project-header .tag { color: var(--color-acento); font-weight: bold; margin-bottom: 0.5rem; display: inline-block; }
+  .project-header h1 { font-size: 3rem; margin-bottom: 1.5rem; }
+  .project-header .buttons { display: flex; justify-content: center; gap: 1rem; }
+  .project-header .buttons a { padding: 0.75rem 1.5rem; border-radius: 0.25rem; text-decoration: none; font-weight: bold; transition: all 0.3s ease; }
+  .project-header .button-primary { background-color: var(--color-acento); color: var(--color-fondo); }
+  .project-header .button-secondary { background-color: var(--color-sutil); color: var(--color-texto); }
+  .project-header .button-primary:hover { background-color: #15d194; }
+  .project-header .button-secondary:hover { background-color: #4b5563; }
+  .hero-image { width: 100%; border-radius: 0.5rem; margin-bottom: 3rem; border: 1px solid var(--color-sutil); cursor: zoom-in; }
+  .project-content section { margin-bottom: 3rem; }
+  .project-content h2 { font-size: 2rem; margin-bottom: 1.5rem; color: var(--color-acento); border-bottom: 1px solid var(--color-sutil); padding-bottom: 0.5rem; }
+  .project-content p, .project-content li { line-height: 1.8; font-size: 1.1rem; }
+  .project-content ul { padding-left: 20px; list-style-position: inside; }
+  .architect-report h3 { font-size: 1.5rem; margin-top: 2rem; margin-bottom: 1rem; color: #a5b4fc; }
+  .image-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.5rem; }
+  .inline-image, .image-pair img { width: 100%; border-radius: 0.25rem; border: 1px solid var(--color-sutil); cursor: zoom-in; }
+  /* Contenedor del botón de cerrar */
+.gclose {
+  position: fixed; /* Lo fijamos en la pantalla */
+  top: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente para que destaque */
+  border-radius: 50%; /* Lo hacemos circular */
+  cursor: pointer;
+  z-index: 100; /* Nos aseguramos de que esté por encima de todo */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s ease;
+}
+
+.gclose:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* El icono SVG del botón 'X' */
+.gclose svg {
+  width: 24px;
+  height: 24px;
+  fill: white; /* Forzamos que el icono sea blanco */
+}
+
+/* Si por alguna razón el SVG no carga, usamos un truco con CSS para dibujar una 'X' */
+.gclose::after, .gclose::before {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 2px;
+    background: white;
+    transform: rotate(45deg);
+}
+
+.gclose::after {
+    transform: rotate(-45deg);
+}
+</style>

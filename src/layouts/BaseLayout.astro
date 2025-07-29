@@ -1,0 +1,134 @@
+---
+// src/layouts/BaseLayout.astro
+const { title } = Astro.props;
+
+// Definimos los enlaces de navegación una sola vez
+const navLinks = [
+  { href: "/#proyectos", text: "Proyectos" },
+  { href: "/#sobre-mi", text: "Sobre Mí" },
+  { href: "/#contacto", text: "Contacto" },
+];
+
+const socialLinks = [
+    { href: "https://github.com/allacalle", text: "GitHub", icon: "github" },
+    { href: "https://www.linkedin.com/in/alfonso-l-4a23b148/", text: "LinkedIn", icon: "linkedin" },
+];
+---
+<!doctype html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width" />
+  <title>{title} | Alfonso Lacalle García</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  
+  <style is:global>
+    @import '../styles/global.css';
+
+    .main-header, .main-footer {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+    
+    .main-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 1.5rem;
+      padding-bottom: 1.5rem;
+    }
+
+    .header-logo a {
+      font-size: 1.25rem;
+      font-weight: bold;
+      text-decoration: none;
+      color: var(--color-texto);
+    }
+
+    .header-nav ul {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .header-nav a {
+      text-decoration: none;
+      color: var(--color-texto);
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+    .header-nav a:hover {
+      color: var(--color-acento);
+    }
+
+    .main-footer {
+      text-align: center;
+      margin-top: 6rem;
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+      border-top: 1px solid var(--color-sutil);
+    }
+
+    .footer-socials {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    .footer-socials a {
+      color: var(--color-texto);
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
+    .footer-socials a:hover {
+      color: var(--color-acento);
+      transform: scale(1.1);
+    }
+    .footer-socials svg {
+      width: 24px;
+      height: 24px;
+    }
+  </style>
+</head>
+<body class="bg-gray-900 text-gray-200">
+  
+  <header class="main-header">
+    <div class="header-logo">
+      <a href="/">Alfonso Lacalle</a>
+    </div>
+    <nav class="header-nav">
+      <ul>
+        {navLinks.map(link => (
+          <li><a href={link.href}>{link.text}</a></li>
+        ))}
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <slot />
+  </main>
+  
+  <footer class="main-footer">
+    <div class="footer-socials">
+      {socialLinks.map(link => (
+        <a href={link.href} target="_blank" rel="noopener noreferrer" title={link.text}>
+          {link.icon === 'github' && (
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.165 6.839 9.49.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.031-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.03 1.595 1.03 2.688 0 3.848-2.338 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd"></path></svg>
+          )}
+          {link.icon === 'linkedin' && (
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14zm-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-3.08v8.37h3.08v-4.56a1.41 1.41 0 0 1 1.41-1.41c.78 0 1.41.63 1.41 1.41v4.56h3.08zM6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69.76 1.68 1.68 0 0 0 0 1.86c.27.49.75.76 1.25.76h.01zM8.38 18.5H5.38V10.12h3z"></path></svg>
+          )}
+        </a>
+      ))}
+    </div>
+    <p>© {new Date().getFullYear()} Alfonso Lacalle García. Construido con Astro ♥.</p>
+  </footer>
+
+</body>
+</html>

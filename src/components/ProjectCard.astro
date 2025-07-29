@@ -1,0 +1,130 @@
+---
+// --- LÓGICA (Sin cambios) ---
+const { 
+  slug,
+  title, 
+  tag,
+  description, 
+  imgSrc, 
+  isWip = false
+} = Astro.props;
+---
+
+<!-- --- ESTRUCTURA HTML (Sin cambios) --- -->
+<a href={`/proyectos/${slug}`} class="card-link">
+  <article>
+    <div class="image-container">
+      <img src={imgSrc} alt={`Captura de pantalla del proyecto ${title}`} />
+      <span class="tag">{tag}</span>
+    </div>
+    
+    <div class="content">
+      <h3>{title}</h3>
+      {isWip && <span class="wip-badge">En Desarrollo</span>}
+      <p class="description">{description}</p>
+      
+      <div class="buttons">
+        <span class="button-primary">Leer Caso de Estudio</span>
+      </div>
+    </div>
+  </article>
+</a>
+
+<!-- --- ESTILOS CSS (CORREGIDOS Y COMPLETOS) --- -->
+<style>
+  /* ENLACE GLOBAL */
+  .card-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    height: 100%; /* ¡Clave! Para que ocupe todo el espacio de la rejilla */
+  }
+
+  /* TARJETA */
+  article {
+    background-color: var(--color-sutil);
+    border-radius: 0.5rem;
+    overflow: hidden;
+    height: 100%;
+    display: flex; /* ¡Clave! Activa Flexbox */
+    flex-direction: column; /* Apila los elementos verticalmente */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .card-link:hover article {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+  }
+
+  /* IMAGEN */
+  .image-container {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+  }
+  .image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+  }
+  .card-link:hover .image-container img {
+    transform: scale(1.05);
+  }
+  .tag {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background-color: rgba(17, 24, 39, 0.7);
+    color: var(--color-acento);
+    font-size: 0.75rem;
+    font-weight: bold;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    border: 1px solid var(--color-acento);
+    backdrop-filter: blur(4px);
+  }
+
+  /* CONTENIDO DE TEXTO */
+  .content {
+    padding: 1.5rem;
+    display: flex; /* ¡Clave! Un contenedor flex anidado */
+    flex-direction: column;
+    flex-grow: 1; /* ¡Clave! Hace que esta sección crezca y ocupe el espacio */
+  }
+  h3 {
+    margin-bottom: 0.5rem;
+    font-size: 1.25rem;
+  }
+  .wip-badge {
+    background-color: var(--color-acento);
+    color: var(--color-fondo);
+    font-size: 0.75rem;
+    font-weight: bold;
+    padding: 0.25rem 0.5rem;
+    border-radius: 9999px;
+    display: inline-block;
+    margin-bottom: 1rem;
+  }
+  .description {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--color-texto);
+    flex-grow: 1; /* ¡Clave! Empuja los botones hacia abajo */
+    margin-bottom: 1.5rem;
+  }
+
+  /* BOTÓN "FALSO" */
+  .buttons {
+    display: flex;
+    margin-top: auto; /* ¡Clave! Empuja el botón al final del contenedor .content */
+  }
+  .button-primary {
+    flex-grow: 1;
+    text-align: center;
+    padding: 0.75rem;
+    border-radius: 0.25rem;
+    font-weight: bold;
+    background-color: var(--color-acento);
+    color: var(--color-fondo);
+  }
+</style>

@@ -1,0 +1,86 @@
+<section>
+  <h2>Mi Filosofía de Trabajo</h2>
+  
+  <div class="cards-container">
+    <!-- Tarjeta 1: Disciplina y Calidad con el icono de CÓDIGO -->
+    <article>
+      <div class="icon-container">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25" />
+        </svg>
+      </div>
+      <h3>Disciplina y Calidad</h3>
+      <p>Código limpio, atención obsesiva al detalle y un compromiso total para llevar cada proyecto a su máximo potencial.</p>
+    </article>
+
+    <!-- Tarjeta 2: Curiosidad Insaciable con el icono de LIBRO -->
+    <article>
+      <div class="icon-container">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
+        </svg>
+      </div>
+      <h3>Curiosidad Insaciable</h3>
+      <p>Exploración constante de nuevas tecnologías y un deseo genuino por aprender y mejorar mis habilidades cada día.</p>
+    </article>
+
+    <!-- Tarjeta 3: Enfoque Humano con el icono de CORAZÓN -->
+    <article>
+      <div class="icon-container">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+        </svg>
+      </div>
+      <h3>Enfoque Humano</h3>
+      <p>La tecnología es para las personas. Me pongo en la piel del usuario para construir soluciones intuitivas y realmente útiles.</p>
+    </article>
+  </div>
+</section>
+<style>
+  section {
+    text-align: center;
+    margin-bottom: 6rem; /* Más espacio debajo */
+  }
+
+  h2 {
+    font-size: 2rem;
+    margin-bottom: 3rem; /* Más espacio sobre las tarjetas */
+  }
+  
+  .cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Hacemos que sea responsive */
+    gap: 2rem;
+  }
+
+  article {
+    background-color: var(--color-sutil);
+    padding: 2rem;
+    border-radius: 0.5rem;
+    border: 1px solid transparent; /* Borde transparente por defecto */
+    text-align: center; /* Centramos todo el contenido de la tarjeta */
+    transition: transform 0.3s ease, border-color 0.3s ease; /* Transición suave */
+  }
+
+  article:hover {
+    transform: translateY(-5px); /* Efecto de "levantar" la tarjeta */
+    border-color: var(--color-acento); /* El borde aparece con el color de acento */
+  }
+
+  .icon-container {
+    margin-bottom: 1.5rem;
+    color: var(--color-acento); /* Coloreamos el icono */
+  }
+
+  .icon-container svg {
+  width: 48px;
+  height: 48px;
+  stroke: var(--color-acento); /* ¡Importante! Usamos el color verde para el TRAZO */
+  fill: none;                  /* ¡Importante! Le decimos que NO tenga RELLENO */
+}
+
+  h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+  }
+</style>

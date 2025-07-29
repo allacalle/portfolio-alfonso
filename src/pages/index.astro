@@ -1,16 +1,46 @@
 ---
+import BaseLayout from '../layouts/BaseLayout.astro';
 
+import Hero from '../components/Hero.astro';
+import MosaicoDeValores from '../components/MosaicoDeValores.astro';
+import ProjectsGallery from '../components/ProjectsGallery.astro';
+import Contact from '../components/Contact.astro';
+import '../styles/global.css';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Alfonso Lacalle - Ingeniero de Software</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  </head>
+<body>
+  <div class="container">
+    <BaseLayout title="Ingeniero de Software">
+
+  <!-- Este es el contenedor que añade los "huecos" a los lados -->
+  <div class="container">
+    <Hero />
+    
+    <section id="sobre-mi">
+      <MosaicoDeValores />
+    </section>
+
+    <section id="proyectos">
+      <ProjectsGallery />
+    </section>
+
+    <section id="contacto">
+      <Contact />
+    </section>
+  </div>
+
+</BaseLayout>
+  </div>
+</body>
 </html>

@@ -1,0 +1,34 @@
+/* --- Variables de Color y Tipografía --- */
+/* Usamos :root para que estas variables estén disponibles en todo el documento. */
+:root {
+  --color-fondo: #111827;      /* Un gris muy oscuro, casi negro */
+  --color-texto: #e5e7eb;      /* Un blanco roto, fácil de leer */
+  --color-acento: #10b981;    /* Nuestro verde fresco (verde esmeralda) */
+  --color-sutil: #374151;      /* Un gris más claro para bordes o fondos sutiles */
+  
+  --fuente-principal: 'Inter', sans-serif;
+}
+
+/* --- Reseteo y Estilos Base --- */
+/* Aplicamos estilos base a la etiqueta <html> y <body> */
+html {
+  font-family: var(--fuente-principal);
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+}
+
+body {
+  margin: 0; /* Quitamos el margen por defecto del body */
+  padding: 2rem; /* Añadimos un poco de espacio en los bordes */
+}
+
+/* --- Estilos para los Encabezados --- */
+h1, h2, h3 {
+  margin: 0;
+}
+
+.container {
+  max-width: 1100px; /* Ancho máximo del contenido */
+  margin: 0 auto; /* Centra el contenedor horizontalmente */
+  padding: 0 1rem; /* Pequeño espacio en los bordes para móviles */
+}

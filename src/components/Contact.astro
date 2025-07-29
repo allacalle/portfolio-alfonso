@@ -1,0 +1,105 @@
+---
+// No necesitamos lógica de servidor aquí, todo es HTML y JavaScript de cliente.
+---
+<section>
+  <h2>Hablemos</h2>
+  <p>
+    ¿Tienes una idea, un proyecto o una oportunidad en mente? Me encantaría
+    saber más. Puedes contactarme a través de mis redes profesionales o
+    directamente con el siguiente formulario.
+  </p>
+  
+  <div class="links">
+    <a href="mailto:allacalle@gmail.com">Enviar Email</a>
+    <a href="https://www.linkedin.com/in/alfonso-l-4a23b148/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+  </div>
+  
+  <!-- CONECTAMOS EL FORMULARIO A FORMSPREE -->
+  <form id="contact-form" action="https://formspree.io/f/xanbjzvq" method="POST">
+    <label for="name">Nombre</label>
+    <input type="text" id="name" name="name" required />
+    
+    <label for="email">Email</label>
+    <input type="email" id="email" name="email" required />
+    
+    <label for="message">Mensaje</label>
+    <textarea id="message" name="message" rows="5" required></textarea>
+    
+    <button type="submit">Enviar Mensaje</button>
+  </form>
+
+  <!-- MENSAJE DE ÉXITO (inicialmente oculto) -->
+  <p id="success-message" style="display: none; color: var(--color-acento); font-weight: bold; margin-top: 1rem;">
+    ¡Gracias por tu mensaje! Te responderé lo antes posible.
+  </p>
+</section>
+
+<script>
+  // --- Script de Formulario con Tipado Seguro ---
+
+  // 1. Obtenemos los elementos del DOM y le decimos a TypeScript qué tipo de elemento son.
+  const form = document.getElementById('contact-form') as HTMLFormElement | null;
+  const successMessage = document.getElementById('success-message') as HTMLParagraphElement | null;
+
+  // 2. Definimos el tipo del evento para que no sea 'any'
+  async function handleSubmit(event: SubmitEvent) {
+    event.preventDefault(); // Prevenimos que la página se recargue
+    
+    // Si el formulario no existe, no hacemos nada.
+    if (!form) return;
+
+    const data = new FormData(event.target as HTMLFormElement);
+    
+    try {
+      const response = await fetch(form.action, {
+        method: form.method,
+        body: data,
+        headers: {
+            'Accept': 'application/json'
+        }
+      });
+
+      if (response.ok) {
+        // Si el mensaje de éxito existe, lo mostramos
+        if (successMessage) {
+            successMessage.style.display = 'block';
+        }
+        form.reset();
+        form.style.display = 'none';
+      } else {
+        const responseData = await response.json();
+        if (Object.hasOwn(responseData, 'errors')) {
+          const errorMessages = responseData.errors.map((error: { message: string }) => error.message).join(", ");
+          alert(errorMessages);
+        } else {
+          alert("Oops! Hubo un problema al enviar tu formulario.");
+        }
+      }
+    } catch (error) {
+      alert("Oops! Hubo un problema de conexión.");
+    }
+  }
+
+  // 3. Solo añadimos el 'listener' si el formulario realmente existe en la página.
+  if (form) {
+    form.addEventListener("submit", handleSubmit);
+  }
+</script>
+
+<!-- Los estilos que ya teníamos (sin cambios) -->
+<style>
+  /* ... aquí va todo el CSS que ya tenías, no lo borres ... */
+  section { text-align: center; max-width: 600px; margin: 0 auto; margin-bottom: 4rem; }
+  h2 { font-size: 2rem; margin-bottom: 1rem; }
+  p { margin-bottom: 2rem; line-height: 1.7; }
+  .links { display: flex; justify-content: center; gap: 1rem; margin-bottom: 3rem; }
+  .links a { color: var(--color-texto); background-color: var(--color-sutil); padding: 0.75rem 1.5rem; border-radius: 0.25rem; text-decoration: none; font-weight: bold; transition: background-color 0.3s ease; }
+  .links a:hover { background-color: #4b5563; }
+  form { display: flex; flex-direction: column; gap: 1rem; text-align: left; }
+  label { font-size: 0.9rem; font-weight: bold; }
+  input, textarea { background-color: var(--color-fondo); border: 1px solid var(--color-sutil); border-radius: 0.25rem; padding: 0.75rem; color: var(--color-texto); font-family: var(--fuente-principal); font-size: 1rem; transition: border-color 0.3s ease, box-shadow 0.3s ease; }
+  input:focus, textarea:focus { outline: none; border-color: var(--color-acento); box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.3); }
+  textarea { resize: vertical; }
+  button[type="submit"] { background-color: var(--color-acento); color: var(--color-fondo); border: none; padding: 1rem; border-radius: 0.25rem; font-weight: bold; font-size: 1rem; cursor: pointer; transition: background-color 0.3s ease; }
+  button[type="submit"]:hover { background-color: #15d194; }
+</style>
