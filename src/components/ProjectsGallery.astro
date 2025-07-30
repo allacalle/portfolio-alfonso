@@ -57,4 +57,15 @@ const enDesarrollo = ALL_PROJECTS.find(p => p.isWip);
     gap: 2rem;
     margin-bottom: 4rem;
   }
+
+  @media (max-width: 768px) {
+  .projects-grid {
+    /* Aunque ya es responsive, nos aseguramos de que el gap sea adecuado */
+    gap: 1.5rem;
+  }
+
+  h3 {
+    text-align: center; /* Centramos los subtítulos en móvil */
+  }
+}
 </style>

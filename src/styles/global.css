@@ -32,3 +32,10 @@ h1, h2, h3 {
   margin: 0 auto; /* Centra el contenedor horizontalmente */
   padding: 0 1rem; /* Pequeño espacio en los bordes para móviles */
 }
+
+/* --- Media Query para Tablets y Móviles --- */
+@media (max-width: 768px) {
+  body {
+    padding: 1rem; /* Reducimos el padding general */
+  }
+}
