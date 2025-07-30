@@ -44,13 +44,18 @@
 
   @media (max-width: 768px) {
   h1 {
-    font-size: 1.8rem; /* Reducimos el tamaño del titular */
-    max-width: 100%; /* Permitimos que ocupe todo el ancho */
+    font-size: 1.8rem; /* Reducimos MUCHO MÁS el tamaño del titular, solo en móvil */
+    max-width: 100%; /* Permitimos que ocupe todo el ancho sin límites raros */
+  }
+
+  p {
+    font-size: 0.8rem; /* Hacemos tu nombre un poquito más pequeño también */
   }
 
   section {
-    min-height: auto; /* Dejamos que la altura sea natural */
-    padding: 2rem 0;
+    min-height: auto; /* Quitamos la altura mínima para que ocupe lo que necesite */
+    padding: 2rem 0; /* Añadimos un poco de espacio vertical */
+    margin-bottom: 2rem; /* Reducimos el espacio inferior en móvil */
   }
 }
 </style>
