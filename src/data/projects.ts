@@ -68,7 +68,7 @@ export const ALL_PROJECTS: Project[] = [
     imgSrc: '/images/bar-tapas.jpg',
     description: 'Catálogo digital conceptual para un bar de tapas, con imágenes generadas por IA.',
     codeUrl: 'https://github.com/allacalle/bar-de-tapas',
-    
+    liveUrl: 'https://bar-de-tapas.vercel.app/',
     challenge: "Tras consolidar mis conocimientos en desarrollo web nativo, mi siguiente objetivo profesional fue dominar React. Buscaba un proyecto que no solo me permitiera explorar a fondo su arquitectura, sino que también tuviera una aplicación real en un mercado que conozco bien: la hostelería de Córdoba. La idea era simular un encargo profesional, pero con un giro innovador: ¿podría construir el catálogo digital de un bar de tapas que no existe, utilizando imágenes generadas por IA para crear un concepto y una carta completamente virtuales?",
     solution: "Para dar vida a este concepto, diseñé y construí una Single-Page Application (SPA) completa utilizando React. La meta era replicar la estructura de un sitio web corporativo real. La aplicación cuenta con una navegación fluida entre distintas secciones (Inicio, Sobre Nosotros, Contacto) gracias a la implementación de React Router. La arquitectura se basa en componentes modulares y reutilizables, una de las principales fortalezas de React, lo que permitió construir una interfaz de usuario consistente y fácil de mantener.",
     
