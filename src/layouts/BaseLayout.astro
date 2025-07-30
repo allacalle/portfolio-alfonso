@@ -73,7 +73,7 @@ const socialLinks = [
       color: var(--color-texto);
     }
 
-    .header-nav ul {
+    .header-nav-desktop ul {
       display: flex;
       gap: 2rem;
       list-style: none;
@@ -81,7 +81,7 @@ const socialLinks = [
       padding: 0;
     }
 
-    .header-nav a {
+    .header-nav-desktop a {
       text-decoration: none;
       color: var(--color-texto);
       font-weight: bold;
@@ -117,6 +117,77 @@ const socialLinks = [
       width: 24px;
       height: 24px;
     }
+
+    /* --- Estilos del Menú de Hamburguesa --- */
+.hamburger-button {
+  display: none; /* Oculto por defecto en pantallas grandes */
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  color: var(--color-texto);
+}
+.hamburger-button svg {
+  width: 32px;
+  height: 32px;
+}
+.icon-close {
+  display: none; /* El icono de cerrar está oculto por defecto */
+}
+
+/* Estilos del menú móvil */
+.header-nav-mobile {
+  display: none; /* El menú móvil está oculto por defecto */
+  background-color: var(--color-fondo);
+  position: absolute;
+  top: 100%; /* Justo debajo del header */
+  left: 0;
+  width: 100%;
+  border-bottom: 1px solid var(--color-sutil);
+}
+.header-nav-mobile ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.header-nav-mobile li {
+  width: 100%;
+  text-align: center;
+}
+.header-nav-mobile a {
+  display: block;
+  padding: 1.5rem;
+  color: var(--color-texto);
+  text-decoration: none;
+  font-weight: bold;
+}
+.header-nav-mobile a:hover {
+  background-color: var(--color-sutil);
+}
+
+/* --- La Media Query para Móviles --- */
+@media (max-width: 768px) {
+  .header-nav-desktop {
+    display: none; /* Ocultamos la navegación de escritorio */
+  }
+  .hamburger-button {
+    display: block; /* Mostramos el botón de hamburguesa */
+  }
+  
+  /* Cuando el menú está abierto */
+  body.menu-open .header-nav-mobile {
+    display: block;
+  }
+  body.menu-open .icon-open {
+    display: none;
+  }
+  body.menu-open .icon-close {
+    display: block;
+  }
+}
   </style>
 </head>
 <body class="bg-gray-900 text-gray-200">
@@ -127,14 +198,35 @@ const socialLinks = [
     <div class="header-logo">
       <a href="/">Alfonso Lacalle</a>
     </div>
-    <nav class="header-nav">
+
+    <!-- Navegación para pantallas grandes -->
+    <nav class="header-nav-desktop">
       <ul>
         {navLinks.map(link => (
           <li><a href={link.href}>{link.text}</a></li>
         ))}
       </ul>
     </nav>
+    
+    <!-- Botón de Hamburguesa para pantallas pequeñas -->
+    <button class="hamburger-button" aria-label="Abrir menú">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon-open">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+      </svg>
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon-close">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
   </div>
+
+  <!-- Menú desplegable para pantallas pequeñas -->
+  <nav class="header-nav-mobile">
+    <ul>
+      {navLinks.map(link => (
+        <li><a href={link.href}>{link.text}</a></li>
+      ))}
+    </ul>
+  </nav>
 </header>
 
   <main>
@@ -157,6 +249,20 @@ const socialLinks = [
     <p>&copy; {new Date().getFullYear()} Alfonso Lacalle García. Construido con Astro & una <a href="/making-of" style="color: var(--color-acento);">larga conversación</a> &hearts;.</p>
 
   </footer>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const hamburgerButton = document.querySelector('.hamburger-button');
+    const body = document.querySelector('body');
+
+    if (hamburgerButton) {
+      hamburgerButton.addEventListener('click', () => {
+        if (body) {
+          body.classList.toggle('menu-open');
+        }
+      });
+    }
+  });
+</script>
 
 </body>
 </html>
