@@ -1,5 +1,6 @@
 ---
 import { ALL_PROJECTS } from '../../data/projects.ts';
+import BaseLayout from '../../layouts/BaseLayout.astro';
 import Lightbox from '../../components/Lightbox.astro'; // <-- IMPORTANTE
 
 
@@ -28,6 +29,7 @@ const { project } = Astro.props;
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
 </head>
 <body>
+<BaseLayout title={project.title}>
   <div class="project-container">
     
     <header class="project-header">
@@ -81,7 +83,7 @@ const { project } = Astro.props;
 
     </main>
   </div>
-
+  </BaseLayout>
   <Lightbox /> <!-- <--- IMPORTANTE: La etiqueta del componente al final -->
 
 

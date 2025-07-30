@@ -6,7 +6,7 @@ const { title } = Astro.props;
 const navLinks = [
   { href: "/#proyectos", text: "Proyectos" },
   { href: "/#sobre-mi", text: "Sobre Mí" },
-  { href: "/#contacto", text: "Contacto" },
+  { href: "/contacto", text: "Contacto" },
 ];
 
 const socialLinks = [
@@ -35,12 +35,36 @@ const socialLinks = [
     }
     
     .main-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding-top: 1.5rem;
-      padding-bottom: 1.5rem;
-    }
+  /* Hacemos que sea pegajoso */
+  position: sticky;
+  top: 0;
+  z-index: 50; /* Lo ponemos por encima de otro contenido */
+
+  /* Le damos un fondo para que el texto de abajo no se vea a través */
+  background-color: var(--color-fondo);
+  border-bottom: 1px solid var(--color-sutil); /* Una línea sutil para separarlo */
+  
+  /* Mantenemos los estilos que ya teníamos */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  
+  /* Esto es nuevo: aplicamos el max-width aquí para que el fondo ocupe todo el ancho */
+  width: 100%;
+}
+
+/* Creamos un contenedor interno para el contenido del header */
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
 
     .header-logo a {
       font-size: 1.25rem;
@@ -97,7 +121,9 @@ const socialLinks = [
 </head>
 <body class="bg-gray-900 text-gray-200">
   
-  <header class="main-header">
+  <!-- HEADER NAVEGABLE (VERSIÓN STICKY) -->
+<header class="main-header">
+  <div class="header-container">
     <div class="header-logo">
       <a href="/">Alfonso Lacalle</a>
     </div>
@@ -108,7 +134,8 @@ const socialLinks = [
         ))}
       </ul>
     </nav>
-  </header>
+  </div>
+</header>
 
   <main>
     <slot />
@@ -127,7 +154,8 @@ const socialLinks = [
         </a>
       ))}
     </div>
-    <p>© {new Date().getFullYear()} Alfonso Lacalle García. Construido con Astro ♥.</p>
+    <p>&copy; {new Date().getFullYear()} Alfonso Lacalle García. Construido con Astro & una <a href="/making-of" style="color: var(--color-acento);">larga conversación</a> &hearts;.</p>
+
   </footer>
 
 </body>

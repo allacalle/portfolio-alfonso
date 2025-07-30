@@ -1,0 +1,76 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout title="Cómo se hizo este porfolio">
+  <div class="container">
+    <div class="story-container">
+      <h1>El "Making-Of" de este Porfolio</h1>
+      <p class="intro">
+        Si has encontrado esta página, es porque eres tan curioso como yo. Este porfolio no nació de un editor de código en silencio, sino de una larga y entretenida conversación.
+      </p>
+      
+      <p>
+        Lo que ves aquí es el resultado de un experimento: un diálogo intenso y colaborativo de dos días con una IA (Gemini) que actuó como mi entrevistador, mi mentor y mi compañero de "pair programming".
+      </p>
+      
+      <p>
+        El proceso me sirvió para mucho más que para escribir código. Me ayudó a recordar y evocar por qué estoy en el mundo del desarrollo de software. Cada pregunta me obligó a profundizar en mis proyectos, a justificar mis decisiones y a redescubrir la pasión que puse en ellos.
+      </p>
+      
+      <p>
+        Elegir Astro, una tecnología que no conocía, fue una decisión consciente para salir de mi zona de confort. Usar la narrativa para explicar mis proyectos no es solo una técnica; es un reflejo de mi personalidad: el cuidado por el detalle, la búsqueda de la calidad y el enfoque en hacer algo de lo que sentirme orgulloso.
+      </p>
+
+      <p>
+        Usar a Gemini como un potenciador de mis propias habilidades me ha permitido, en solo unos días, no solo aprender una tecnología nueva, sino también construir algo que me hace sentir increíblemente contento con el resultado.
+      </p>
+      
+      <p class="outro">
+        Ha sido una forma de conectarme de nuevo conmigo mismo, de ver mi potencial y, sobre todo, de creer un poco más en mí. Gracias por tu curiosidad.
+      </p>
+
+      <a href="/" class="back-link">← Volver a la superficie</a>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .container {
+    max-width: 700px; /* Más estrecho para que sea más fácil de leer */
+  }
+  .story-container {
+    padding: 2rem 0;
+  }
+  .story-container h1 {
+    font-size: 2.5rem;
+    color: var(--color-acento);
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+  .story-container p {
+    font-size: 1.1rem;
+    line-height: 1.9;
+    margin-bottom: 1.5rem;
+  }
+  .intro {
+    font-size: 1.2rem;
+    font-style: italic;
+    color: #a5b4fc; /* Color lavanda */
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  .outro {
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 3rem;
+  }
+  .back-link {
+    display: block;
+    text-align: center;
+    margin-top: 3rem;
+    color: var(--color-acento);
+    font-weight: bold;
+    text-decoration: none;
+  }
+</style>
