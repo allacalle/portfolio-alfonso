@@ -33,9 +33,16 @@ h1, h2, h3 {
   padding: 0 1rem; /* Pequeño espacio en los bordes para móviles */
 }
 
-/* --- Media Query para Tablets y Móviles --- */
 @media (max-width: 768px) {
   body {
-    padding: 1rem; /* Reducimos el padding general */
+    padding: 1rem; /* Reducimos el espacio en los bordes para ganar sitio */
+  }
+
+  h1 {
+    font-size: 2rem; /* Hacemos los títulos principales un poco más pequeños */
+  }
+
+  h2 {
+    font-size: 1.75rem; /* Y los secundarios también */
   }
 }
