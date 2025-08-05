@@ -33,7 +33,7 @@ export const ALL_PROJECTS: Project[] = [
     imgSrc: '/images/parques-jaen.jpg',
     description: 'Guía interactiva de los espacios naturales de Jaén, con mapas y fichas detalladas.',
     liveUrl: 'https://parquesnaturalesjaen.es/',
-    codeUrl: 'https://github.com/allacalle/parquesnaturalesjaen',
+    codeUrl: 'https://github.com/allacalle/ParquesNaturalesJaen-Web-Febrero',
     
     // --- La historia que escribimos juntos ---
     challenge: "Este proyecto nació de una doble necesidad: una personal y una profesional. Recién trasladado a un pueblo de Jaén y con una profunda pasión por la naturaleza, descubrí que la información sobre los parques de la región estaba fragmentada y poco accesible. Al mismo tiempo, como parte de mi formación en diseño web, buscaba un proyecto real que fuera más allá de un simple ejercicio; un reto que me permitiera aplicar y consolidar mis habilidades como ingeniero en una solución útil y tangible para otros amantes de la naturaleza.",
