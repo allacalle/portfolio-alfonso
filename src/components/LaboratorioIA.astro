@@ -1,0 +1,176 @@
+<section id="laboratorio">
+  <h2>Mi Laboratorio de IA</h2>
+
+  <p class="lab-intro">
+    Experimentos documentados con sistemas multi-agente para desarrollo de software.
+    Cinco intentos, cinco lecciones especificas sobre lo que funciona y lo que no en el
+    desarrollo con agentes de IA.
+  </p>
+
+  <div class="lab-cards">
+    <a 
+      href="https://github.com/allacalle/diario-experimentos-ia" 
+      target="_blank" 
+      rel="noopener noreferrer"
+      class="lab-card-link"
+    >
+      <article>
+        <div class="lab-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.165 6.839 9.49.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.031-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.03 1.595 1.03 2.688 0 3.848-2.338 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd"/>
+          </svg>
+        </div>
+
+        <div class="content">
+          <h3>Diario de Experimentos</h3>
+          <span class="tag">Agentes IA</span>
+          <p class="description">
+            De HelloPipeline a B0-SSG: cinco experimentos donde agentes de IA intentan construir software real. Con lecciones, conclusiones y un arco de evolucion documentado.
+          </p>
+
+          <div class="buttons">
+            <span class="button-primary">Ver Diario en GitHub</span>
+          </div>
+        </div>
+      </article>
+    </a>
+
+    <a 
+      href="https://github.com/allacalle/diario-experimentos-ia/blob/main/conclusiones.md" 
+      target="_blank" 
+      rel="noopener noreferrer"
+      class="lab-card-link"
+    >
+      <article>
+        <div class="lab-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M11.25 4.533A9.707 9.707 0 006 3a9.735 9.735 0 00-3.25.555.75.75 0 00-.5.707v14.25a.75.75 0 001 .707A8.237 8.237 0 016 18.75c1.995 0 3.823.707 5.25 1.886V4.533zM12.75 20.636A8.214 8.214 0 0118 18.75c.966 0 1.89.166 2.75.47a.75.75 0 001-.708V4.262a.75.75 0 00-.5-.707A9.735 9.735 0 0018 3a9.707 9.707 0 00-5.25 1.533v16.103z" />
+          </svg>
+        </div>
+
+        <div class="content">
+          <h3>Conclusiones y Aprendizajes</h3>
+          <span class="tag">Lecciones</span>
+          <p class="description">
+            Tres problemas raiz identificados: alineamiento de requisitos, integracion entre agentes, y el ciclo que no se cierra. Soluciones propuestas para el proximo intento.
+          </p>
+
+          <div class="buttons">
+            <span class="button-primary">Leer Conclusiones</span>
+          </div>
+        </div>
+      </article>
+    </a>
+  </div>
+</section>
+
+<style>
+  section {
+    text-align: center;
+    margin-bottom: 6rem;
+  }
+  h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .lab-intro {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--color-texto);
+    max-width: 600px;
+    margin: 0 auto 3rem;
+  }
+
+  .lab-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    margin-bottom: 4rem;
+  }
+
+  .lab-card-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    height: 100%;
+  }
+
+  article {
+    background-color: var(--color-sutil);
+    border-radius: 0.5rem;
+    overflow: hidden;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .lab-card-link:hover article {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+  }
+
+  .lab-icon {
+    padding: 2rem 1.5rem 0.5rem;
+    text-align: center;
+    color: var(--color-acento);
+  }
+  .lab-icon svg {
+    width: 48px;
+    height: 48px;
+  }
+
+  .content {
+    padding: 1rem 1.5rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+  h3 {
+    margin-bottom: 0.5rem;
+    font-size: 1.25rem;
+  }
+  .tag {
+    display: inline-block;
+    background-color: rgba(17, 24, 39, 0.7);
+    color: var(--color-acento);
+    font-size: 0.75rem;
+    font-weight: bold;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    border: 1px solid var(--color-acento);
+    width: fit-content;
+    margin: 0 auto 1rem;
+  }
+  .description {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--color-texto);
+    flex-grow: 1;
+    margin-bottom: 1.5rem;
+  }
+
+  .buttons {
+    display: flex;
+    margin-top: auto;
+  }
+  .button-primary {
+    flex-grow: 1;
+    text-align: center;
+    padding: 0.75rem;
+    border-radius: 0.25rem;
+    font-weight: bold;
+    background-color: var(--color-acento);
+    color: var(--color-fondo);
+  }
+
+  @media (max-width: 768px) {
+    .lab-cards {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+    h2 {
+      font-size: 1.75rem;
+    }
+  }
+</style>
